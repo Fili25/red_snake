@@ -18,8 +18,8 @@ namespace Snake
         }
 
         PictureBox[,] Box;          //Stores all of the pictureboxes on the board
-        int snakeXPos;              //X position of snakes head
-        int snakeYPos;              //Y position of snakes head
+        int snakeXPos;              //X position of snakes head 
+        int snakeYPos;              //Y position of snakes head 
         string changeToDirection = "left";
         string direction = "left";
         int snakeLength = 1;
@@ -31,9 +31,47 @@ namespace Snake
         int AmountOfFood = 1;       //Amount of food on screen at a time
         bool rePlaceFood = true;
 
+
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            panel1.BackColor = Color.Red; //Red background of board
+            if (Program.Theme == "RedBlack")
+                {
+                panel1.BackColor = Color.Red;
+                this.BackColor = System.Drawing.Color.Black;
+                label3.BackColor = System.Drawing.Color.Red;
+                label3.ForeColor = System.Drawing.Color.Red;
+                label6.BackColor = System.Drawing.Color.Red;
+                label6.ForeColor = System.Drawing.Color.Red;
+                label7.BackColor = System.Drawing.Color.Black;
+                label7.ForeColor = System.Drawing.Color.Red;
+                label4.BackColor = System.Drawing.Color.Black;
+                label4.ForeColor = System.Drawing.Color.Red;
+                label1.BackColor = System.Drawing.Color.Black;
+                label1.ForeColor = System.Drawing.Color.Red;
+                SnakeLengthLabel.BackColor = System.Drawing.Color.Black;
+                SnakeLengthLabel.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                panel1.BackColor = Color.Green;
+                this.BackColor = System.Drawing.Color.White;
+                label3.BackColor= System.Drawing.Color.Green;
+                label3.ForeColor = System.Drawing.Color.Green;
+                label6.BackColor = System.Drawing.Color.Green;
+                label6.ForeColor = System.Drawing.Color.Green;
+                label7.BackColor = System.Drawing.Color.White;
+                label7.ForeColor = System.Drawing.Color.Green;
+                label4.BackColor = System.Drawing.Color.White;
+                label4.ForeColor = System.Drawing.Color.Green;
+                label1.BackColor = System.Drawing.Color.White;
+                label1.ForeColor = System.Drawing.Color.Green;
+                SnakeLengthLabel.BackColor = System.Drawing.Color.White;
+                SnakeLengthLabel.ForeColor = System.Drawing.Color.Green;
+
+            }
+            //ЦВЕТ РАМКИ
             EndGameLabel.Cursor = Cursors.Hand;
             foodXPos = new int[10];
             foodYPos = new int[10];
@@ -51,21 +89,17 @@ namespace Snake
                     Box[x, y].Top = 100 + y * 16;
                     Box[x, y].Width = 17;
                     Box[x, y].Height = 17;
-                    Box[x, y].BackColor = Color.Black;
-                    if (BoxBorders.Checked == true)
-                    {
-                        Box[x, y].BorderStyle = BorderStyle.FixedSingle;
-                    }
+                    if (Program.Theme == "RedBlack")
+                        Box[x, y].BackColor = Color.Black;
                     else
-                    {
-                        Box[x, y].BorderStyle = BorderStyle.None;
-                    }
-
+                        Box[x, y].BackColor = Color.White;
                     Controls.Add(Box[x, y]);
                 }
             }                                   // ^
-            
-            Box[15, 15].BackColor = Color.Red;
+            if (Program.Theme == "RedBlack")
+                Box[15, 15].BackColor = Color.Red;
+            else
+                Box[15, 15].BackColor = Color.Green;
             snakeXPos = 15; //Start position of snake
             snakeYPos = 15;
             snakeXPositions[1] = 15;
@@ -109,8 +143,18 @@ namespace Snake
                     {
                         foodXPos[foodNum] = x;
                         foodYPos[foodNum] = y;
-                        foodNum += 1;
-                        Box[x, y].BackColor = Color.Black;
+                        if (Program.Theme == "RedBlack")
+                        {
+                            foodNum += 1;
+                            Box[x, y].BackColor = Color.Black;
+                            Box[x, y].BackColor = Color.Black;
+                        }
+                        else
+                        {
+                            foodNum += 1;
+                            Box[x, y].BackColor = Color.White;
+                            Box[x, y].BackColor = Color.White;
+                        }
                     }
                 }
             }                                               // ^
@@ -128,8 +172,19 @@ namespace Snake
                 {
                     foodXPos[AmountOfFood-  1] = R.Next(0, 30);
                     foodYPos[AmountOfFood - 1] = R.Next(0, 30);
-
-                    if (Box[foodXPos[AmountOfFood - 1], foodYPos[AmountOfFood - 1]].BackColor == Color.Black)
+                    if (Program.Theme == "RedBlack")
+                        if (Box[foodXPos[AmountOfFood - 1], foodYPos[AmountOfFood - 1]].BackColor == Color.Black)
+                        {
+                            Box[foodXPos[AmountOfFood - 1], foodYPos[AmountOfFood - 1]].BackColor = Color.Blue;
+                            foundBox = true;
+                        }
+                        else
+                        {
+                            foodXPos[AmountOfFood - 1] = R.Next(0, 30);
+                            foodYPos[AmountOfFood - 1] = R.Next(0, 30);
+                        }
+                    else
+                        if (Box[foodXPos[AmountOfFood - 1], foodYPos[AmountOfFood - 1]].BackColor == Color.White)
                     {
                         Box[foodXPos[AmountOfFood - 1], foodYPos[AmountOfFood - 1]].BackColor = Color.Blue;
                         foundBox = true;
@@ -139,6 +194,7 @@ namespace Snake
                         foodXPos[AmountOfFood - 1] = R.Next(0, 30);
                         foodYPos[AmountOfFood - 1] = R.Next(0, 30);
                     }
+
                 }                                           // ^
             }
             else
@@ -153,8 +209,19 @@ namespace Snake
 
                         foodXPos[i] = R.Next(0, 30);
                         foodYPos[i] = R.Next(0, 30);
-
-                        if (Box[foodXPos[i], foodYPos[i]].BackColor == Color.Black)
+                        if (Program.Theme == "RedBlack")
+                            if (Box[foodXPos[i], foodYPos[i]].BackColor == Color.Black)
+                            {
+                                Box[foodXPos[i], foodYPos[i]].BackColor = Color.Blue;
+                                foundBox = true;
+                            }
+                            else
+                            {
+                                foodXPos[i] = R.Next(0, 30);
+                                foodYPos[i] = R.Next(0, 30);
+                            }
+                        else
+                            if (Box[foodXPos[i], foodYPos[i]].BackColor == Color.White)
                         {
                             Box[foodXPos[i], foodYPos[i]].BackColor = Color.Blue;
                             foundBox = true;
@@ -172,7 +239,17 @@ namespace Snake
         private void checkIFOffBoard()  //Checks if the snake is not on the board, if it is the game ends
         {
             if (snakeXPos < 0 || snakeXPos > 29 || snakeYPos < 0 || snakeYPos > 29)
-            {
+                {
+                    if (Program.Theme == "RedBlack")
+                         { 
+                            EndGameLabel.BackColor = Color.Black;
+                            EndGameLabel.ForeColor = Color.Red;
+                         }
+                    else
+                         {
+                            EndGameLabel.BackColor = Color.Green;
+                            EndGameLabel.ForeColor = Color.White;
+                         }
                 EndGameLabel.Text = "You Lost!" + Environment.NewLine + Environment.NewLine + "The snake went off the board" + Environment.NewLine + Environment.NewLine + "Click to play again";
                 endGame();
             }
@@ -214,22 +291,35 @@ namespace Snake
                 case "left":
                     snakeXPos -= 1;
                     checkIFOffBoard();
-                    Box[snakeXPos, snakeYPos].BackColor = Color.Red;
+                    if (Program.Theme == "RedBlack")
+                        Box[snakeXPos, snakeYPos].BackColor = Color.Red;
+                    else
+                        Box[snakeXPos, snakeYPos].BackColor = Color.Green;
+
                     break;
                 case "right":
                     snakeXPos += 1;
                     checkIFOffBoard();
-                    Box[snakeXPos, snakeYPos].BackColor = Color.Red;
+                    if (Program.Theme == "RedBlack")
+                        Box[snakeXPos, snakeYPos].BackColor = Color.Red;
+                    else
+                        Box[snakeXPos, snakeYPos].BackColor = Color.Green;
                     break;
                 case "up":
                     snakeYPos -= 1;
                     checkIFOffBoard();
-                    Box[snakeXPos, snakeYPos].BackColor = Color.Red;
+                    if (Program.Theme == "RedBlack")
+                        Box[snakeXPos, snakeYPos].BackColor = Color.Red;
+                    else
+                        Box[snakeXPos, snakeYPos].BackColor = Color.Green;
                     break;
                 case "down":
-                    snakeYPos += 1;
+                    snakeYPos += 1; 
                     checkIFOffBoard();
-                    Box[snakeXPos, snakeYPos].BackColor = Color.Red;
+                    if (Program.Theme == "RedBlack")
+                        Box[snakeXPos, snakeYPos].BackColor = Color.Red;
+                    else
+                        Box[snakeXPos, snakeYPos].BackColor = Color.Green;
                     break;
             }
 
@@ -247,6 +337,16 @@ namespace Snake
             {
                 if (snakeXPos == snakeXPositions[i] && snakeYPos == snakeYPositions[i])
                 {
+                    if (Program.Theme == "RedBlack")
+                    {
+                        EndGameLabel.BackColor = Color.Black;
+                        EndGameLabel.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        EndGameLabel.BackColor = Color.White;
+                        EndGameLabel.ForeColor = Color.Green;
+                    }
                     EndGameLabel.Text = "You Lost!" + Environment.NewLine + Environment.NewLine + "The snake collided with itself" + Environment.NewLine + Environment.NewLine + "Click to play again";
                     endGame();
                 }
@@ -277,21 +377,16 @@ namespace Snake
             for (int y = 0; y < 30; y++) // v Updates snakes position
             {
                 for (int x = 0; x < 30; x++)
-                {
+                {   
                     if (Box[x, y].BackColor != Color.Blue)
                     {
-                        Box[x, y].BackColor = Color.Black;
+                        if (Program.Theme == "RedBlack")
+                            Box[x, y].BackColor = Color.Black;
+                        else
+                            Box[x, y].BackColor = Color.White;  
                     }
 
 
-                    if (BoxBorders.Checked == true)
-                    {
-                        Box[x, y].BorderStyle = BorderStyle.FixedSingle;
-                    }
-                    else
-                    {
-                        Box[x, y].BorderStyle = BorderStyle.None;
-                    }
                         
                 }
             }
@@ -300,7 +395,11 @@ namespace Snake
             {
                 if (snakeXPositions[i] != -1)
                 {
-                    Box[snakeXPositions[i], snakeYPositions[i]].BackColor = Color.Red;
+                    
+                    if (Program.Theme == "RedBlack")
+                        Box[snakeXPositions[i], snakeYPositions[i]].BackColor = Color.Red;
+                    else
+                        Box[snakeXPositions[i], snakeYPositions[i]].BackColor = Color.Green;
                 }
 
             }                           // ^
@@ -330,7 +429,10 @@ namespace Snake
             {
                 for (int x = 0; x < 30; x++)
                 {
-                    Box[x, y].BackColor = Color.Black;
+                    if (Program.Theme == "RedBlack")
+                        Box[x, y].BackColor = Color.Black;
+                    else
+                        Box[x, y].BackColor = Color.White;
                 }
             }
 
@@ -342,7 +444,10 @@ namespace Snake
 
             snakeLength = 1;
 
-            Box[15, 15].BackColor = Color.Red;
+            if (Program.Theme == "RedBlack")
+                Box[15, 15].BackColor = Color.Red;
+            else
+                Box[15, 15].BackColor = Color.Green;
             snakeXPos = 15;
             snakeYPos = 15;
             direction = "left";
@@ -542,6 +647,11 @@ namespace Snake
             Hide();
             MENU f = new MENU();
             f.Show();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

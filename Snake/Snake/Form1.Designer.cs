@@ -46,7 +46,6 @@
             this.A8 = new System.Windows.Forms.Label();
             this.A7 = new System.Windows.Forms.Label();
             this.A6 = new System.Windows.Forms.Label();
-            this.BoxBorders = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -87,7 +86,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(353, 18);
+            this.label1.Location = new System.Drawing.Point(349, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 23);
             this.label1.TabIndex = 15;
@@ -116,6 +115,8 @@
             this.label2.Size = new System.Drawing.Size(139, 23);
             this.label2.TabIndex = 17;
             this.label2.Text = "Amount of food:";
+            this.label2.Visible = false;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // A1
             // 
@@ -128,6 +129,7 @@
             this.A1.TabIndex = 18;
             this.A1.Text = "1";
             this.A1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.A1.Visible = false;
             this.A1.Click += new System.EventHandler(this.A1_Click);
             // 
             // A2
@@ -141,6 +143,7 @@
             this.A2.TabIndex = 19;
             this.A2.Text = "2";
             this.A2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.A2.Visible = false;
             this.A2.Click += new System.EventHandler(this.A2_Click);
             // 
             // A3
@@ -154,6 +157,7 @@
             this.A3.TabIndex = 20;
             this.A3.Text = "3";
             this.A3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.A3.Visible = false;
             this.A3.Click += new System.EventHandler(this.A3_Click);
             // 
             // A4
@@ -167,6 +171,7 @@
             this.A4.TabIndex = 21;
             this.A4.Text = "4";
             this.A4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.A4.Visible = false;
             this.A4.Click += new System.EventHandler(this.A4_Click);
             // 
             // A5
@@ -180,6 +185,7 @@
             this.A5.TabIndex = 22;
             this.A5.Text = "5";
             this.A5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.A5.Visible = false;
             this.A5.Click += new System.EventHandler(this.A5_Click);
             // 
             // A10
@@ -193,6 +199,7 @@
             this.A10.TabIndex = 27;
             this.A10.Text = "10";
             this.A10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.A10.Visible = false;
             this.A10.Click += new System.EventHandler(this.A10_Click);
             // 
             // A9
@@ -206,6 +213,7 @@
             this.A9.TabIndex = 26;
             this.A9.Text = "9";
             this.A9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.A9.Visible = false;
             this.A9.Click += new System.EventHandler(this.A9_Click);
             // 
             // A8
@@ -219,6 +227,7 @@
             this.A8.TabIndex = 25;
             this.A8.Text = "8";
             this.A8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.A8.Visible = false;
             this.A8.Click += new System.EventHandler(this.A8_Click);
             // 
             // A7
@@ -232,6 +241,7 @@
             this.A7.TabIndex = 24;
             this.A7.Text = "7";
             this.A7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.A7.Visible = false;
             this.A7.Click += new System.EventHandler(this.A7_Click);
             // 
             // A6
@@ -245,22 +255,8 @@
             this.A6.TabIndex = 23;
             this.A6.Text = "6";
             this.A6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.A6.Visible = false;
             this.A6.Click += new System.EventHandler(this.A6_Click);
-            // 
-            // BoxBorders
-            // 
-            this.BoxBorders.AutoSize = true;
-            this.BoxBorders.Checked = true;
-            this.BoxBorders.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.BoxBorders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BoxBorders.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxBorders.ForeColor = System.Drawing.Color.Red;
-            this.BoxBorders.Location = new System.Drawing.Point(174, 588);
-            this.BoxBorders.Name = "BoxBorders";
-            this.BoxBorders.Size = new System.Drawing.Size(203, 27);
-            this.BoxBorders.TabIndex = 29;
-            this.BoxBorders.Text = "Individual box borders";
-            this.BoxBorders.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -322,11 +318,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(583, 624);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.BoxBorders);
             this.Controls.Add(this.A10);
             this.Controls.Add(this.A9);
             this.Controls.Add(this.A8);
@@ -373,7 +368,6 @@
         private System.Windows.Forms.Label A8;
         private System.Windows.Forms.Label A7;
         private System.Windows.Forms.Label A6;
-        private System.Windows.Forms.CheckBox BoxBorders;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;

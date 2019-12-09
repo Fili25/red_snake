@@ -8,6 +8,7 @@ namespace Snake
 {
     static class Program
     {
+        public static string Theme;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

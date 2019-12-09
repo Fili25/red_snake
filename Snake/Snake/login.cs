@@ -24,6 +24,18 @@ namespace Snake
 
         private void login_Load(object sender, EventArgs e)
         {
+            if (Program.Theme == "RedBlack")
+            {
+                label1.ForeColor = Color.Red;
+                this.BackColor = System.Drawing.Color.Black;
+                button1.ForeColor = Color.Red;
+            }
+            else
+            {
+                label1.ForeColor = Color.Green;
+                this.BackColor = System.Drawing.Color.White;
+                button1.ForeColor = Color.Green;
+            }
 
         }
 
