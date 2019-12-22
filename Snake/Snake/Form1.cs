@@ -352,9 +352,9 @@ namespace Snake
                 }
             }
 
-            if (snakeLength < 50) //Increases the snakes movement speed depending on its length (shorter timer interval = faster speed)
+            if (snakeLength < 60) //Increases the snakes movement speed depending on its length (shorter timer interval = faster speed)
             {
-                timer1.Interval = 500 - snakeLength * 20;
+                timer1.Interval = 300-snakeLength*5;
             }
             
             for (int i = 99; i >= 1; i--) // v Makes the snakes body follow the path the head of the snake took
@@ -421,7 +421,7 @@ namespace Snake
 
         private void ResetGame()
         {
-            timer1.Interval = 500;
+            timer1.Interval = 800;
             timer1.Start();
             rePlaceFood = true;
 
