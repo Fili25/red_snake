@@ -352,9 +352,9 @@ namespace Snake
                 }
             }
 
-            if (snakeLength < 20) //Increases the snakes movement speed depending on its length (shorter timer interval = faster speed)
+            if (snakeLength < 50) //Increases the snakes movement speed depending on its length (shorter timer interval = faster speed)
             {
-                timer1.Interval = 500 - snakeLength * 25;
+                timer1.Interval = 500 - snakeLength * 20;
             }
             
             for (int i = 99; i >= 1; i--) // v Makes the snakes body follow the path the head of the snake took

@@ -115,6 +115,7 @@ namespace Snake
                 label1.ForeColor = System.Drawing.Color.Green;
                 label2.BackColor = System.Drawing.Color.White;
                 label2.ForeColor = System.Drawing.Color.Green;
+                
             }
         }
     }
