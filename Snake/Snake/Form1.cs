@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace Snake
+
 {
     public partial class Form1 : Form
     {
@@ -17,25 +17,23 @@ namespace Snake
             InitializeComponent();
         }
 
-        PictureBox[,] Box;          //Stores all of the pictureboxes on the board
-        int snakeXPos;              //X position of snakes head 
-        int snakeYPos;              //Y position of snakes head 
+        PictureBox[,] Box;          //Хранит все PictureBox на поле
+        int snakeXPos;              //Позиция головы змейки по оси X 
+        int snakeYPos;              //Позиция головы змейки по оси Y
         string changeToDirection = "left";
         string direction = "left";
         int snakeLength = 1;
-        int[] snakeXPositions;      //Stores all the X positions of each piece of the snake
-        int[] snakeYPositions;      //Stores all the Y positions of each piece of the snake
+        int[] snakeXPositions;      //Хранит все позиции каждой части змеи по оси X 
+        int[] snakeYPositions;      //Хранит все позиции каждой части змеи по оси Y
         Random R = new Random();
         int[] foodXPos;
         int[] foodYPos;
-        int AmountOfFood = 1;       //Amount of food on screen at a time
+        int AmountOfFood = 1;       //Колличество еды на экране в одно время
         bool rePlaceFood = true;
-
-
-
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            textBox1.Text = Program.playername;
             if (Program.Theme == "RedBlack")
                 {
                 panel1.BackColor = Color.Red;
@@ -52,6 +50,8 @@ namespace Snake
                 label1.ForeColor = System.Drawing.Color.Red;
                 SnakeLengthLabel.BackColor = System.Drawing.Color.Black;
                 SnakeLengthLabel.ForeColor = System.Drawing.Color.Red;
+                textBox1.ForeColor= System.Drawing.Color.Red;
+                textBox1.BackColor = System.Drawing.Color.Black;
             }
             else
             {
@@ -69,6 +69,8 @@ namespace Snake
                 label1.ForeColor = System.Drawing.Color.Green;
                 SnakeLengthLabel.BackColor = System.Drawing.Color.White;
                 SnakeLengthLabel.ForeColor = System.Drawing.Color.Green;
+                textBox1.ForeColor = System.Drawing.Color.Green;
+                textBox1.BackColor = System.Drawing.Color.White;
 
             }
             //ЦВЕТ РАМКИ
@@ -77,10 +79,10 @@ namespace Snake
             foodYPos = new int[10];
             snakeXPositions = new int[100];
             snakeYPositions = new int[100];
-            Box = new PictureBox[30, 30]; //30x30 board of pictureboxes
+            Box = new PictureBox[30, 30]; //30x30 поле picturebox
 
 
-            for (int y = 0; y < 30; y++)        // v Creates the 30x30 board of pictureboxes
+            for (int y = 0; y < 30; y++)        // Создает поле 30x30 pictureboxes
             {
                 for (int x = 0; x < 30; x++)
                 {
@@ -100,15 +102,15 @@ namespace Snake
                 Box[15, 15].BackColor = Color.Red;
             else
                 Box[15, 15].BackColor = Color.Green;
-            snakeXPos = 15; //Start position of snake
+            snakeXPos = 15; //Начальная позиция змеи
             snakeYPos = 15;
             snakeXPositions[1] = 15;
             snakeYPositions[1] = 15;
-            newFood(); //Places food
+            newFood(); //Размещает еду
             panel1.SendToBack();
         }
 
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //Get arrow key input to move snake
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //Получить стрелочный ввод управелния змеи
         {
             switch (keyData)
             {
@@ -131,11 +133,11 @@ namespace Snake
         bool foundBox = false;
         int foodNum = 1;
 
-        private void newFood() //Places food
+        private void newFood() //Размещение еды
         {
             foodNum = 0;
 
-            for (int y = 0; y < 30; y++)                    // v Stores positions of all the food
+            for (int y = 0; y < 30; y++)                    //Установка позиций всей еды
             {
                 for (int x = 0; x < 30; x++)
                 {
@@ -159,16 +161,16 @@ namespace Snake
                 }
             }                                               // ^
 
-            if (rePlaceFood == false) //rePlacedFood is true when the game is starting or the Amount of food is changed
+            if (rePlaceFood == false) //rePlacedFood имеет значение true, когда игра запускается или количество еды меняется
             {
 
-                for (int i = 0; i <= AmountOfFood-1; i++)   // v Places food
+                for (int i = 0; i <= AmountOfFood-1; i++)   // Размещение еды
                 {
                     Box[foodXPos[i], foodYPos[i]].BackColor = Color.Blue;
                 }                                           // ^
                 
                 foundBox = false;
-                while (foundBox == false)                   // v Places 1 food in a random place and only on a box with nothin in
+                while (foundBox == false)                   // v Размещает 1 еду в случайном месте и только на поле без всего
                 {
                     foodXPos[AmountOfFood-  1] = R.Next(0, 30);
                     foodYPos[AmountOfFood - 1] = R.Next(0, 30);
@@ -200,7 +202,7 @@ namespace Snake
             else
             {
                 rePlaceFood = false;
-                for (int i = 0; i <= AmountOfFood - 1; i++)   // v Places 1 to 10 food depending on the AmountOfFood variable, (e.g. if AmountOfFood is 4 it places 4 food)
+                for (int i = 0; i <= AmountOfFood - 1; i++)   // v Размещает от 1 до 10 еды в зависимости от переменной AmountOfFood (например, если AmountOfFood равен 4, в нем размещается 4 еды)
                 {
                     foundBox = false;
                     while (foundBox == false)
@@ -236,7 +238,7 @@ namespace Snake
             }
         }
 
-        private void checkIFOffBoard()  //Checks if the snake is not on the board, if it is the game ends
+        private void checkIFOffBoard()  //Проверяет, нет ли змеи на поле, заканчивается если ее нет
         {
             if (snakeXPos < 0 || snakeXPos > 29 || snakeYPos < 0 || snakeYPos > 29)
                 {
@@ -251,15 +253,16 @@ namespace Snake
                             EndGameLabel.ForeColor = Color.White;
                          }
                 EndGameLabel.Text = "You Lost!" + Environment.NewLine + Environment.NewLine + "The snake went off the board" + Environment.NewLine + Environment.NewLine + "Click to play again";
+                //конец
                 endGame();
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)    //Called every so many milliseconds depending on the interval which is set determined by the length of the snake (to increase difficulty of game, longer snake = faster update)
+        private void timer1_Tick(object sender, EventArgs e)    //Вызывается каждую миллисекунду в зависимости от установленного интервала, определяемого длиной змеи (для увеличения сложности игры. длинная змея = более быстрое обновление)
         {
             SnakeLengthLabel.Text = snakeLength.ToString();
 
-            switch (changeToDirection) //Checks if the snake can move in the direction of the arrow key pressed
+            switch (changeToDirection) //Проверяет, может ли змея двигаться в направлении нажатой клавиши со стрелкой
             {
                 case "left":
                     if (direction != "right")
@@ -286,7 +289,7 @@ namespace Snake
                     }
                     break;
             }
-            switch (direction) //Changes snakes direction
+            switch (direction) //меняет напрвление змеи
             {
                 case "left":
                     snakeXPos -= 1;
@@ -323,7 +326,7 @@ namespace Snake
                     break;
             }
 
-            for (int i = 0; i <= 9; i++)    //Checks if the snake has eaten a food
+            for (int i = 0; i <= 9; i++)    //проверяет съела ли змея еду
             {
                 if (snakeXPos == foodXPos[i] && snakeYPos == foodYPos[i])
                 {
@@ -333,7 +336,7 @@ namespace Snake
                 }
             }           
 
-            for (int i = 1; i < 100; i++) //Checks if the snake has collided with itself
+            for (int i = 1; i < 100; i++) //Проверяет, столкнулась ли змея с собой
             {
                 if (snakeXPos == snakeXPositions[i] && snakeYPos == snakeYPositions[i])
                 {
@@ -348,16 +351,17 @@ namespace Snake
                         EndGameLabel.ForeColor = Color.Green;
                     }
                     EndGameLabel.Text = "You Lost!" + Environment.NewLine + Environment.NewLine + "The snake collided with itself" + Environment.NewLine + Environment.NewLine + "Click to play again";
+                    //конец
                     endGame();
                 }
             }
 
-            if (snakeLength < 60) //Increases the snakes movement speed depending on its length (shorter timer interval = faster speed)
+            if (snakeLength < 60) //Увеличивает скорость движения змей в зависимости от ее длины (более короткий интервал таймера = более высокая скорость)
             {
                 timer1.Interval = 300-snakeLength*5;
             }
             
-            for (int i = 99; i >= 1; i--) // v Makes the snakes body follow the path the head of the snake took
+            for (int i = 99; i >= 1; i--) // vЗаставляет тело змеи следовать по пути, по которому шла голова змеи
             {
                 if (i < snakeLength)
                 {
@@ -374,7 +378,7 @@ namespace Snake
             snakeXPositions[1] = snakeXPos;            
             snakeYPositions[1] = snakeYPos;
 
-            for (int y = 0; y < 30; y++) // v Updates snakes position
+            for (int y = 0; y < 30; y++) // vОбновляет позицию змеи
             {
                 for (int x = 0; x < 30; x++)
                 {   
@@ -421,7 +425,7 @@ namespace Snake
 
         private void ResetGame()
         {
-            timer1.Interval = 800;
+            timer1.Interval = 300;
             timer1.Start();
             rePlaceFood = true;
 
@@ -454,186 +458,6 @@ namespace Snake
             changeToDirection = "left";
             snakeXPositions[1] = 15;
             snakeYPositions[1] = 15;
-            newFood();
-        }
-
-        private void A1_Click(object sender, EventArgs e)   // v The Amount of food UI, (top left of form)
-        {
-            A1.ForeColor = Color.Red;
-            A1.Font = new Font(A1.Font, FontStyle.Bold);
-            A2.ForeColor = Color.Maroon;
-            A3.ForeColor = Color.Maroon;
-            A4.ForeColor = Color.Maroon;
-            A5.ForeColor = Color.Maroon;
-            A6.ForeColor = Color.Maroon;
-            A7.ForeColor = Color.Maroon;
-            A8.ForeColor = Color.Maroon;
-            A9.ForeColor = Color.Maroon;
-            A10.ForeColor = Color.Maroon;
-            AmountOfFood = 1;
-            rePlaceFood = true;
-            newFood();
-        }
-
-        private void A2_Click(object sender, EventArgs e)
-        {
-            A2.ForeColor = Color.Red;
-            A2.Font = new Font(A2.Font, FontStyle.Bold);
-            A1.ForeColor = Color.Maroon;
-            A3.ForeColor = Color.Maroon;
-            A4.ForeColor = Color.Maroon;
-            A5.ForeColor = Color.Maroon;
-            A6.ForeColor = Color.Maroon;
-            A7.ForeColor = Color.Maroon;
-            A8.ForeColor = Color.Maroon;
-            A9.ForeColor = Color.Maroon;
-            A10.ForeColor = Color.Maroon;
-            AmountOfFood = 2;
-            rePlaceFood = true;
-            newFood();
-        }
-
-        private void A3_Click(object sender, EventArgs e)
-        {
-            A3.ForeColor = Color.Red;
-            A3.Font = new Font(A3.Font, FontStyle.Bold);
-            A1.ForeColor = Color.Maroon;
-            A2.ForeColor = Color.Maroon;
-            A4.ForeColor = Color.Maroon;
-            A5.ForeColor = Color.Maroon;
-            A6.ForeColor = Color.Maroon;
-            A7.ForeColor = Color.Maroon;
-            A8.ForeColor = Color.Maroon;
-            A9.ForeColor = Color.Maroon;
-            A10.ForeColor = Color.Maroon;
-            AmountOfFood = 3;
-            rePlaceFood = true;
-            newFood();
-        }
-
-        private void A4_Click(object sender, EventArgs e)
-        {
-            A4.ForeColor = Color.Red;
-            A4.Font = new Font(A4.Font, FontStyle.Bold);
-            A1.ForeColor = Color.Maroon;
-            A2.ForeColor = Color.Maroon;
-            A3.ForeColor = Color.Maroon;
-            A5.ForeColor = Color.Maroon;
-            A6.ForeColor = Color.Maroon;
-            A7.ForeColor = Color.Maroon;
-            A8.ForeColor = Color.Maroon;
-            A9.ForeColor = Color.Maroon;
-            A10.ForeColor = Color.Maroon;
-            AmountOfFood = 4;
-            rePlaceFood = true;
-            newFood();
-        }
-
-        private void A5_Click(object sender, EventArgs e)
-        {
-            A5.ForeColor = Color.Red;
-            A5.Font = new Font(A5.Font, FontStyle.Bold);
-            A1.ForeColor = Color.Maroon;
-            A2.ForeColor = Color.Maroon;
-            A3.ForeColor = Color.Maroon;
-            A4.ForeColor = Color.Maroon;
-            A6.ForeColor = Color.Maroon;
-            A7.ForeColor = Color.Maroon;
-            A8.ForeColor = Color.Maroon;
-            A9.ForeColor = Color.Maroon;
-            A10.ForeColor = Color.Maroon;
-            AmountOfFood = 5;
-            rePlaceFood = true;
-            newFood();
-        }
-
-        private void A6_Click(object sender, EventArgs e)
-        {
-            A6.ForeColor = Color.Red;
-            A6.Font = new Font(A6.Font, FontStyle.Bold);
-            A1.ForeColor = Color.Maroon;
-            A2.ForeColor = Color.Maroon;
-            A3.ForeColor = Color.Maroon;
-            A4.ForeColor = Color.Maroon;
-            A5.ForeColor = Color.Maroon;
-            A7.ForeColor = Color.Maroon;
-            A8.ForeColor = Color.Maroon;
-            A9.ForeColor = Color.Maroon;
-            A10.ForeColor = Color.Maroon;
-            AmountOfFood = 6;
-            rePlaceFood = true;
-            newFood();
-        }
-
-        private void A7_Click(object sender, EventArgs e)
-        {
-            A7.ForeColor = Color.Red;
-            A7.Font = new Font(A7.Font, FontStyle.Bold);
-            A1.ForeColor = Color.Maroon;
-            A2.ForeColor = Color.Maroon;
-            A3.ForeColor = Color.Maroon;
-            A4.ForeColor = Color.Maroon;
-            A5.ForeColor = Color.Maroon;
-            A6.ForeColor = Color.Maroon;
-            A8.ForeColor = Color.Maroon;
-            A9.ForeColor = Color.Maroon;
-            A10.ForeColor = Color.Maroon;
-            AmountOfFood = 7;
-            rePlaceFood = true;
-            newFood();
-        }
-
-        private void A8_Click(object sender, EventArgs e)
-        {
-            A8.ForeColor = Color.Red;
-            A8.Font = new Font(A8.Font, FontStyle.Bold);
-            A1.ForeColor = Color.Maroon;
-            A2.ForeColor = Color.Maroon;
-            A3.ForeColor = Color.Maroon;
-            A4.ForeColor = Color.Maroon;
-            A5.ForeColor = Color.Maroon;
-            A6.ForeColor = Color.Maroon;
-            A7.ForeColor = Color.Maroon;
-            A9.ForeColor = Color.Maroon;
-            A10.ForeColor = Color.Maroon;
-            AmountOfFood = 8;
-            rePlaceFood = true;
-            newFood();
-        }
-
-        private void A9_Click(object sender, EventArgs e)
-        {
-            A9.ForeColor = Color.Red;
-            A9.Font = new Font(A9.Font, FontStyle.Bold);
-            A1.ForeColor = Color.Maroon;
-            A2.ForeColor = Color.Maroon;
-            A3.ForeColor = Color.Maroon;
-            A4.ForeColor = Color.Maroon;
-            A5.ForeColor = Color.Maroon;
-            A6.ForeColor = Color.Maroon;
-            A7.ForeColor = Color.Maroon;
-            A8.ForeColor = Color.Maroon;
-            A10.ForeColor = Color.Maroon;
-            AmountOfFood = 9;
-            rePlaceFood = true;
-            newFood();
-        }
-
-        private void A10_Click(object sender, EventArgs e)
-        {
-            A10.ForeColor = Color.Red;
-            A10.Font = new Font(A10.Font, FontStyle.Bold);
-            A1.ForeColor = Color.Maroon;
-            A2.ForeColor = Color.Maroon;
-            A3.ForeColor = Color.Maroon;
-            A4.ForeColor = Color.Maroon;
-            A5.ForeColor = Color.Maroon;
-            A6.ForeColor = Color.Maroon;
-            A7.ForeColor = Color.Maroon;
-            A8.ForeColor = Color.Maroon;
-            A9.ForeColor = Color.Maroon;
-            AmountOfFood = 10;
-            rePlaceFood = true;
             newFood();
         }
 

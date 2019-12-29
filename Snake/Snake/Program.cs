@@ -8,7 +8,7 @@ namespace Snake
 {
     static class Program
     {
-        public static string Theme;
+        public static string Theme, playername;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

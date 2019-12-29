@@ -40,10 +40,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Red;
-            this.label1.Font = new System.Drawing.Font("MatchTV", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(323, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(296, 57);
+            this.label1.Size = new System.Drawing.Size(335, 55);
             this.label1.TabIndex = 4;
             this.label1.Text = "НАСТРОЙКИ";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -52,10 +52,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Red;
-            this.label2.Font = new System.Drawing.Font("MatchTV", 34F, System.Drawing.FontStyle.Bold);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 34F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(386, 129);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 55);
+            this.label2.Size = new System.Drawing.Size(165, 53);
             this.label2.TabIndex = 5;
             this.label2.Text = "ТЕМЫ";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -71,6 +71,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Выйти из аккаунта";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
