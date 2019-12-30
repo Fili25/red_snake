@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<users>
+  <Gamer Name="Ivan">
+    <Score>50</Score>
+  </Gamer>
+  <Gamer Name="Nekit">
+    <Score>100</Score>
+  </Gamer>
+  <Gamer Name="Иван">
+    <Score>7</Score>
+  </Gamer>
+</users>

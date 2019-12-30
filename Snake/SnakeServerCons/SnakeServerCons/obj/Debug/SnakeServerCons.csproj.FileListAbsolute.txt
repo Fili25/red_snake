@@ -1,0 +1,6 @@
+c:\users\ivan_nout\documents\visual studio 2017\Projects\SnakeServerCons\SnakeServerCons\bin\Debug\SnakeServerCons.exe.config
+c:\users\ivan_nout\documents\visual studio 2017\Projects\SnakeServerCons\SnakeServerCons\bin\Debug\SnakeServerCons.exe
+c:\users\ivan_nout\documents\visual studio 2017\Projects\SnakeServerCons\SnakeServerCons\bin\Debug\SnakeServerCons.pdb
+c:\users\ivan_nout\documents\visual studio 2017\Projects\SnakeServerCons\SnakeServerCons\obj\Debug\SnakeServerCons.csprojResolveAssemblyReference.cache
+c:\users\ivan_nout\documents\visual studio 2017\Projects\SnakeServerCons\SnakeServerCons\obj\Debug\SnakeServerCons.exe
+c:\users\ivan_nout\documents\visual studio 2017\Projects\SnakeServerCons\SnakeServerCons\obj\Debug\SnakeServerCons.pdb

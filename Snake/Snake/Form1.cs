@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Sockets;
 namespace Snake
 
 {
@@ -254,6 +256,7 @@ namespace Snake
                          }
                 EndGameLabel.Text = "You Lost!" + Environment.NewLine + Environment.NewLine + "The snake went off the board" + Environment.NewLine + Environment.NewLine + "Click to play again";
                 //конец
+                send(Convert.ToString(snakeLength));
                 endGame();
             }
         }
@@ -352,6 +355,7 @@ namespace Snake
                     }
                     EndGameLabel.Text = "You Lost!" + Environment.NewLine + Environment.NewLine + "The snake collided with itself" + Environment.NewLine + Environment.NewLine + "Click to play again";
                     //конец
+                    send(Convert.ToString(snakeLength));
                     endGame();
                 }
             }
@@ -477,5 +481,51 @@ namespace Snake
         {
 
         }
+
+        static void send(string score)
+        {
+            // адрес и порт сервера, к которому будем подключаться
+            int port = 8005; // порт сервера
+            string address = "127.0.0.1"; // адрес сервера
+            
+                
+                    try
+                    {
+                        IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
+
+                        Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                        // подключаемся к удаленному хосту
+                        socket.Connect(ipPoint);
+                        string message = "GamerName=" + Program.playername + "Score=" + score;
+                        byte[] data = Encoding.Unicode.GetBytes(message);
+                        socket.Send(data);
+
+                        // получаем ответ
+                        data = new byte[1024]; // буфер для ответа
+                        StringBuilder builder = new StringBuilder();
+                        int bytes = 0; // количество полученных байт
+
+                        do
+                        {
+                            bytes = socket.Receive(data, data.Length, 0);
+                            builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                        }
+                        while (socket.Available > 0);
+                        //Console.WriteLine("ответ сервера: " + builder.ToString());
+
+                        // закрываем сокет
+                        socket.Shutdown(SocketShutdown.Both);
+                        socket.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    // Console.Read();
+                
+            
+
+        }
+
     }
 }

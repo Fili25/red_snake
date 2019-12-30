@@ -35,23 +35,25 @@
             // 
             // listBox1
             // 
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(198, 68);
+            this.listBox1.ItemHeight = 24;
+            this.listBox1.Location = new System.Drawing.Point(154, 65);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(387, 342);
+            this.listBox1.Size = new System.Drawing.Size(498, 340);
             this.listBox1.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Red;
-            this.label2.Font = new System.Drawing.Font("MatchTV", 34F, System.Drawing.FontStyle.Bold);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 34F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(275, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(226, 55);
+            this.label2.Size = new System.Drawing.Size(267, 53);
             this.label2.TabIndex = 6;
-            this.label2.Text = "ТАБЛИЦА";
+            this.label2.Text = "РЕКОРДЫ";
             // 
             // button2
             // 
@@ -79,6 +81,7 @@
             this.Name = "records";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "records";
+            this.Load += new System.EventHandler(this.records_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
