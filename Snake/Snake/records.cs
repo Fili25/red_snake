@@ -28,6 +28,30 @@ namespace Snake
 
         private void records_Load(object sender, EventArgs e)
         {
+            if (Program.Theme == "RedBlack")
+            {
+
+                label2.ForeColor = Color.Black;
+                label2.BackColor = Color.Red;
+                this.BackColor = System.Drawing.Color.Black;
+                button2.ForeColor = Color.Red;
+                button2.BackColor = Color.Black;
+                listBox1.ForeColor = Color.Red;
+                listBox1.BackColor = Color.Black;
+
+
+            }
+            else
+            {
+                label2.ForeColor = Color.Green;
+                label2.BackColor = Color.White;
+                this.BackColor = System.Drawing.Color.White;
+                button2.ForeColor = Color.Green;
+                button2.BackColor = Color.White;
+                listBox1.ForeColor = Color.Green;ыы
+                listBox1.BackColor = Color.White;
+
+            }
             int port = 8005; // порт сервера
             string address = "127.0.0.1"; // адрес сервера
             try

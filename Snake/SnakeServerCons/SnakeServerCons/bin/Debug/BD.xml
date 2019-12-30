@@ -9,4 +9,7 @@
   <Gamer Name="Иван">
     <Score>7</Score>
   </Gamer>
+  <Gamer Name="ZahARRow">
+    <Score>8</Score>
+  </Gamer>
 </users>
