@@ -31,7 +31,6 @@ namespace Snake
                 label1.ForeColor = Color.Red;
                 this.BackColor = System.Drawing.Color.Black;
                 button1.ForeColor = Color.Red;
-                button1.BackColor = Color.Black;
                 textBox1.ForeColor = Color.Red;
 
 
@@ -41,7 +40,6 @@ namespace Snake
                 label1.ForeColor = Color.Green;
                 this.BackColor = System.Drawing.Color.White;
                 button1.ForeColor = Color.Green;
-                button1.BackColor = Color.White;
                 textBox1.ForeColor = Color.Green;
                 
             }

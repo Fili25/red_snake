@@ -19,7 +19,7 @@ namespace SnakeServerCons
 
             work();
 
-        }
+        } 
 
 
         static void work()

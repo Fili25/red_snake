@@ -4,3 +4,10 @@ c:\users\ivan_nout\documents\visual studio 2017\Projects\SnakeServerCons\SnakeSe
 c:\users\ivan_nout\documents\visual studio 2017\Projects\SnakeServerCons\SnakeServerCons\obj\Debug\SnakeServerCons.csprojResolveAssemblyReference.cache
 c:\users\ivan_nout\documents\visual studio 2017\Projects\SnakeServerCons\SnakeServerCons\obj\Debug\SnakeServerCons.exe
 c:\users\ivan_nout\documents\visual studio 2017\Projects\SnakeServerCons\SnakeServerCons\obj\Debug\SnakeServerCons.pdb
+C:\Users\mikha\Downloads\Zmeyka\SnakeServerCons\SnakeServerCons\bin\Debug\SnakeServerCons.exe.config
+C:\Users\mikha\Downloads\Zmeyka\SnakeServerCons\SnakeServerCons\bin\Debug\SnakeServerCons.exe
+C:\Users\mikha\Downloads\Zmeyka\SnakeServerCons\SnakeServerCons\bin\Debug\SnakeServerCons.pdb
+C:\Users\mikha\Downloads\Zmeyka\SnakeServerCons\SnakeServerCons\obj\Debug\SnakeServerCons.csprojAssemblyReference.cache
+C:\Users\mikha\Downloads\Zmeyka\SnakeServerCons\SnakeServerCons\obj\Debug\SnakeServerCons.csproj.CoreCompileInputs.cache
+C:\Users\mikha\Downloads\Zmeyka\SnakeServerCons\SnakeServerCons\obj\Debug\SnakeServerCons.exe
+C:\Users\mikha\Downloads\Zmeyka\SnakeServerCons\SnakeServerCons\obj\Debug\SnakeServerCons.pdb
